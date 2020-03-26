@@ -35,6 +35,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
 
     <script type="text/javascript">
+        var total_cases
+        var total_deaths
+        var total_recovered
+        var last_updated
+
         function xmlparse() {
             xmlhttp = "";
             if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -50,22 +55,21 @@
             x = xmlDoc.getElementsByTagName("Overall-infected-details");
 
 
-            total_cases = (x[0].getElementsByTagName("TOTAL_CASES")[0]);
-            total_death = (x[0].getElementsByTagName("TOTAL_DEATHS")[0]);
-            total_recovered = (x[0].getElementsByTagName("TOTAL_RECOVERED")[0]);
-            last_updated = (x[0].getElementsByTagName("LAST_UPDATED")[0]);
+            total_cases = (x[0].getElementsByTagName("TOTAL_CASES")[0]).textContent;
+            total_death = (x[0].getElementsByTagName("TOTAL_DEATHS")[0]).textContent;
+            total_recovered = (x[0].getElementsByTagName("TOTAL_RECOVERED")[0]).textContent;
+            last_updated = (x[0].getElementsByTagName("DATE")[0]).textContent;
 
-            document.getElementById("total-cases").innerHTML = total_cases.textContent;
-            document.getElementById("total-deaths").innerHTML = total_death.textContent;
-            document.getElementById("total-recovered").innerHTML = total_recovered.textContent;
-            document.getElementById("last-updated").innerHTML = last_updated.textContent;
+            document.getElementById("total-cases").innerHTML = total_cases;
+            document.getElementById("total-deaths").innerHTML = total_death;
+            document.getElementById("total-recovered").innerHTML = total_recovered;
+            document.getElementById("last-updated").innerHTML = last_updated;
             txt = "Coronavirus Update(live):" + total_cases + " Cases and " + total_death + " Deaths from COVID-19 Virus Outbreak -NewsOlive"
             document.title = txt
-            alert(txt)
         }
 
         function loadCoronavirus() {
-            window.location.href = '/population.html'
+            window.location.href = '/index.html'
         }
     </script>
 </head>
@@ -86,25 +90,27 @@
     </header>
     <div>
         <div class="label-name" id="page-top">Coronavirus disease (COVID-19) outbreak situation</div>
-        <div style="font-size:13px; color:#999; text-align:center" id="last-updated">Published Date: March 24, 2020, 11:28 GMT</div>
+        <div style="font-size:13px; color:#999; text-align:center">Published Date:
+            <span id="last-updated"></span>
+        </div>
         <div style="margin-top:20px; text-align:center; font-size:14px"> <a href="#countries">Countries</a> - <a href="#news">News</a></div>
         <div id="counter-wrap" style="margin-top:15px">
             <h1>Coronavirus Cases:</h1>
             <div class="counter-number">
-                <span style="color:#aaa" id="total-cases">392,221</span>
+                <span style="color:#aaa" id="total-cases"></span>
             </div>
         </div>
         <div style="text-align:center "><a href="#countries">view by country</a></div>
         <div id="counter-wrap" style="margin-top:15px">
             <h1>Deaths:</h1>
             <div class="counter-number">
-                <span style="color:#aaa" id="total-deaths">17,146</span>
+                <span style="color:#aaa" id="total-deaths"></span>
             </div>
         </div>
         <div id="counter-wrap" style="margin-top:15px">
             <h1>Recovered:</h1>
             <div class="counter-number">
-                <span style="color:darkgreen" id="total-recovered">102,852</span>
+                <span style="color:darkgreen" id="total-recovered"></span>
             </div>
         </div>
 
