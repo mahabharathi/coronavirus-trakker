@@ -1,0 +1,70 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,100|Amiri|Playfair+Display&display=swap|Roboto+Condensed:300|Noto+Sans:400,700,400italic,700italic);
+.logo {
+    margin-top: 0px
+}
+
+*html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.tag {
+    list-style: none;
+}
+
+.tag .tag-list {
+    display: inline;
+    margin-right: 10px;
+}
+
+.main nav {
+    float: right;
+}
+
+.main nav .tag {
+    height: 100px;
+    line-height: 100px;
+}
+
+.navbar-brand img {
+    margin-top: 20px;
+}
+
+.label-name {
+    text-align: center;
+    background-color: #f5f5f5;
+    color: #777;
+    font-size: 19px;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-family: Tahoma;
+}
+
+#counter-wrap h1 {
+    font-size: 35px;
+    text-align: center;
+    font-weight: 200;
+}
+
+.counter-number {
+    font-size: 40px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.info {
+    text-align: center;
+}
+
+.info .info-list {
+    list-style: none;
+    margin-right: 30px;
+}
+
+#iframe {
+    margin-top: 50px;
+    width: 2000px;
+    border: hidden;
+    height: 300px;
+}

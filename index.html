@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <title>Coronavirus Update(live):392,221 Cases and 17,146 Deaths from COVID-19 Virus Outbreak -NewsOlive</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Live statistics and coronavirus news tracking the number of confirmed cases, recovered patients, and death toll by country due to the COVID 19 coronavirus from Wuhan, China. Coronavirus counter with new cases, historical data, and info. Daily charts, graphs, news and updates">
+    <!-- live update count-->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/js/script.js"></script>
+
+    <!-- tables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" />
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        function xmlparse() {
+            xmlhttp = "";
+            if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlhttp.open("GET", "xml/current_cases_details.xml", false);
+            xmlhttp.send();
+            xmlDoc = xmlhttp.responseXML;
+
+            x = xmlDoc.getElementsByTagName("Overall-infected-details");
+
+
+            total_cases = (x[0].getElementsByTagName("TOTAL_CASES")[0]);
+            total_death = (x[0].getElementsByTagName("TOTAL_DEATHS")[0]);
+            total_recovered = (x[0].getElementsByTagName("TOTAL_RECOVERED")[0]);
+            last_updated = (x[0].getElementsByTagName("LAST_UPDATED")[0]);
+
+            document.getElementById("total-cases").innerHTML = total_cases.textContent;
+            document.getElementById("total-deaths").innerHTML = total_death.textContent;
+            document.getElementById("total-recovered").innerHTML = total_recovered.textContent;
+            document.getElementById("last-updated").innerHTML = last_updated.textContent;
+            txt = "Coronavirus Update(live):" + total_cases + " Cases and " + total_death + " Deaths from COVID-19 Virus Outbreak -NewsOlive"
+            document.title = txt
+            alert(txt)
+        }
+
+        function loadCoronavirus() {
+            window.location.href = '/population.html'
+        }
+    </script>
+</head>
+
+<body onload="xmlparse();">
+    <header class="main">
+        <div class="container">
+            <div class="row">
+                <a class="navbar-brand" href="/"><img src="/img/header-logo.png" title="newolive" border="0"></a>
+                <nav>
+                    <ul class="tag">
+                        <li class="tag-list"><a href="index.html"><span style="color:#FF9900; font-weight:bold">Coronavirus</span></a></li>
+                        <li class="tag-list"><a href="javascript:loadCoronavirus()">Population</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div>
+        <div class="label-name" id="page-top">Coronavirus disease (COVID-19) outbreak situation</div>
+        <div style="font-size:13px; color:#999; text-align:center" id="last-updated">Published Date: March 24, 2020, 11:28 GMT</div>
+        <div style="margin-top:20px; text-align:center; font-size:14px"> <a href="#countries">Countries</a> - <a href="#news">News</a></div>
+        <div id="counter-wrap" style="margin-top:15px">
+            <h1>Coronavirus Cases:</h1>
+            <div class="counter-number">
+                <span style="color:#aaa" id="total-cases">392,221</span>
+            </div>
+        </div>
+        <div style="text-align:center "><a href="#countries">view by country</a></div>
+        <div id="counter-wrap" style="margin-top:15px">
+            <h1>Deaths:</h1>
+            <div class="counter-number">
+                <span style="color:#aaa" id="total-deaths">17,146</span>
+            </div>
+        </div>
+        <div id="counter-wrap" style="margin-top:15px">
+            <h1>Recovered:</h1>
+            <div class="counter-number">
+                <span style="color:darkgreen" id="total-recovered">102,852</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="info" style="padding:20px; margin-top:40px; background-color:#Fafafa">
+                <div style="margin-bottom:30px; clear:both;">
+                    <p class="info-msg"><strong>COVID-19 : INDIA </strong></p>
+                    <ul class="info-list">
+                        <li><strong><a href="https://www.mohfw.gov.in/">Latest updates by Government of India</a></strong></li>
+                        <li><strong><a href="https://icmr.nic.in/node/39071">Indian council of Medical Research (ICMR)</a></strong></li>
+                        <li><strong><a href="https://www.who.int/india/emergencies/india-situation-report">India situation Report (WHO)</a></strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info" style="padding:20px; margin-top:40px; background-color:#Fafafa">
+                <div style="margin-bottom:30px; clear:both;">
+                    <p class="info-msg"><strong>Useful info: </strong></p>
+                    <ul class="info-list">
+                        <li><strong><a href="https://www.who.int/health-topics/coronavirus#tab=tab_3">Symptoms</a></strong></li>
+                        <li><strong><a href="https://www.who.int/health-topics/coronavirus#tab=tab_2">Prevention</a></strong></li>
+                        <li><strong><a href="https://www.who.int/news-room/q-a-detail/q-a-coronaviruses">Q&A on coronaviruses (COVID-19)</a></strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
